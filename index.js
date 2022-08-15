@@ -14,6 +14,10 @@ const newAlert = (message) => {
   close.addEventListener('click', () => alert.remove())
 }
 
+const alertBar = document.querySelector('#alert-bar')
+const alertButton = document.querySelector('#alert-button')
+alertButton.addEventListener('click', () => newAlert(alertBar.value))
+
 const handleError = (error) => {
   newAlert(error.message)
   weatherInfo = {}

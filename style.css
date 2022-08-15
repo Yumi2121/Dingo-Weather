@@ -1,6 +1,3 @@
-body {
-  margin: 0;
-}
 .alert {
   border: solid 0.1em tomato;
   border-radius: 0.25em;
@@ -22,6 +19,8 @@ body {
 }
 
 .splash {
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
   background-color: rgba(100, 100, 100, 0.7);
