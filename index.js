@@ -1,5 +1,41 @@
 let weatherInfo = {}
 
+// Call this function to create an alert at the top of the page!
+const newAlert = (message) => {
+  const alert = document.createElement('div')
+  const close = document.createElement('div')
+  alert.classList.add('alert')
+  close.classList.add('close')
+  alert.innerText = message
+  close.innerText = 'X'
+  const body = document.querySelector('body')
+  body.prepend(alert)
+  alert.appendChild(close)
+  close.addEventListener('click', () => alert.remove())
+}
+
+const handleError = (error) => {
+  newAlert(error.message)
+  weatherInfo = {}
+  console.error(error)
+}
+
+const runSpinner = () => {
+  const splash = document.createElement('div')
+  const loader = document.createElement('h1')
+  loader.innerText = 'LOADING...'
+  loader.id = 'loader'
+  splash.classList.add('splash')
+  const body = document.querySelector('body')
+  body.prepend(splash)
+  splash.appendChild(loader)
+}
+
+const stopSpinner = () => {
+  const splash = document.querySelector('.splash')
+  splash.remove()
+}
+
 const getWeatherInfo = async (geoLocation) => {
   const apiKey = '3fb3bd415089d39656842aea6abbf73f'
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${geoLocation.toLowerCase()}&appid=${apiKey}`
@@ -7,25 +43,27 @@ const getWeatherInfo = async (geoLocation) => {
     const response = await fetch(url, {
       'Access-Control-Allow-Origin': 'https://api.openweathermap.org'
     })
-    const text = await response.text()
-    const data = JSON.parse(text)
-    console.log('this should be the response: ', data)
-    return data
-  } catch (e) {
-    console.error(e)
+    if (response.status === 200) {
+      const text = await response.text()
+      const data = JSON.parse(text)
+      console.log('this should be the response: ', data)
+      return data
+    } else {
+      throw new Error('something went wrong')
+    }
+  } catch (error) {
+    handleError(error)
   }
 }
 
 const searchBar = document.querySelector('#search-bar')
 const searchButton = document.querySelector('#search-button')
 
-const handleClick = () => {
-  try {
-    weatherInfo = getWeatherInfo(searchBar.value)
-    renderWeatherInfo(weatherInfo)
-  } catch (e) {
-    console.error(e)
-  }
+const handleClick = async () => {
+  runSpinner()
+  weatherInfo = await getWeatherInfo(searchBar.value)
+  stopSpinner()
+  renderWeatherInfo(weatherInfo)
 }
 
 searchButton.addEventListener('click', () => handleClick())
@@ -73,4 +111,5 @@ const current = {
   name: 'Brisbane',
   cod: 200
 }
+
 const renderWeatherInfo = (dailyWeather) => {}
