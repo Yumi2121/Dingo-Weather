@@ -62,3 +62,37 @@ const current = {
   cod: 200
 }
 const renderWeatherInfo = (dailyWeather) => {}
+
+const mainDate = document.getElementById('main-date')
+const timeStamp = new Date(current.dt * 1000)
+const dateStr = timeStamp.toLocaleDateString()
+mainDate.innerHTML = dateStr
+
+const mainLocation = document.getElementById('main-location')
+let currLocation = current.name + ',' + current.sys.country
+mainLocation.innerHTML = `${currLocation}`
+
+let weatherIconID = current.weather[0].icon
+document.getElementById(
+  'weather-icon'
+).src = `http://openweathermap.org/img/wn/${weatherIconID}@2x.png`
+
+let currTemp = Math.round(current.main.temp - 273)
+let currTempDom = document.getElementById('temp')
+currTempDom.innerHTML = `${currTemp} C`
+
+let sunriseTimeStamp = new Date(current.sys.sunrise * 1000)
+let sun = document.getElementById('sun')
+sun.textContent = `Sunrise: ${sunriseTimeStamp.getHours()}:${sunriseTimeStamp.getMinutes()}`
+
+let sunsetTimeStamp = new Date(current.sys.sunset * 1000)
+let sunset = document.getElementById('sunset')
+sunset.textContent = `Sunset: ${sunsetTimeStamp.getHours()}:${sunsetTimeStamp.getMinutes()}`
+
+let rain = current.clouds.all
+let rainPercent = document.getElementById('rain')
+rainPercent.textContent = `Chance of Rain: ${rain}%`
+
+let wind = current.wind.speed
+let windDom = document.getElementById('wind')
+windDom.textContent = `Wind Speed: ${wind} m/s`
