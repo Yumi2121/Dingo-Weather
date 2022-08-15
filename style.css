@@ -1,10 +1,27 @@
+body {
+  box-sizing: border-box;
+}
+
+#alert-area {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 0.5rem;
+  position: fixed;
+  box-sizing: inherit;
+}
 .alert {
   border: solid 0.1em tomato;
+  box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.2);
   border-radius: 0.25em;
   background-color: pink;
   padding: 0.25em;
   margin-top: 0.25em;
   display: flex;
+  width: 100%;
+  box-sizing: inherit;
+
   justify-content: space-between;
 }
 

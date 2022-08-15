@@ -8,8 +8,8 @@ const newAlert = (message) => {
   close.classList.add('close')
   alert.innerText = message
   close.innerText = 'X'
-  const body = document.querySelector('body')
-  body.prepend(alert)
+  const alertArea = document.querySelector('#alert-area')
+  alertArea.prepend(alert)
   alert.appendChild(close)
   close.addEventListener('click', () => alert.remove())
 }
