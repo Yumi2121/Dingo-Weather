@@ -1,45 +1,64 @@
 const getGeolocation = (inputValue) => {}
 
-const getWeatherInfo = (geoLocation) => {}
+const getWeatherInfo = async (geoLocation) => {
+  const apiKey = '3fb3bd415089d39656842aea6abbf73f'
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${geoLocation.toLowerCase()}&appid=${apiKey}`
 
-const daily = {
-  dt: 1646326800,
-  sunrise: 1646306882,
-  sunset: 1646347929,
-  moonrise: 1646309880,
-  moonset: 1646352120,
-  moon_phase: 0.03,
-  temp: {
-    day: 281.63,
-    min: 271.72,
-    max: 282.21,
-    night: 271.72,
-    eve: 277.99,
-    morn: 280.92
+  try {
+    const response = await fetch(url, {
+      'Access-Control-Allow-Origin': 'https://api.openweathermap.org'
+    })
+    const text = await response.text()
+    console.log('this should be the response: ', text)
+    return text
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+getWeatherInfo('Brisbane')
+
+const current = {
+  coord: {
+    lon: 153.0281,
+    lat: -27.4679
   },
-  feels_like: {
-    day: 277.83,
-    night: 264.72,
-    eve: 273.35,
-    morn: 277.66
-  },
-  pressure: 1016,
-  humidity: 55,
-  dew_point: 273.12,
-  wind_speed: 9.29,
-  wind_deg: 3,
-  wind_gust: 16.48,
   weather: [
     {
-      id: 500,
-      main: 'Rain',
-      description: 'light rain',
-      icon: '10d'
+      id: 800,
+      main: 'Clear',
+      description: 'clear sky',
+      icon: '01d'
     }
   ],
-  clouds: 49,
-  pop: 0.25,
-  rain: 0.11,
-  uvi: 3.38
+  base: 'stations',
+  main: {
+    temp: 293.36,
+    feels_like: 292.56,
+    temp_min: 291.83,
+    temp_max: 295.23,
+    pressure: 1011,
+    humidity: 43
+  },
+  visibility: 10000,
+  wind: {
+    speed: 6.17,
+    deg: 30
+  },
+  clouds: {
+    all: 0
+  },
+  dt: 1660542014,
+  sys: {
+    type: 2,
+    id: 2005393,
+    country: 'AU',
+    sunrise: 1660508337,
+    sunset: 1660548376
+  },
+  timezone: 36000,
+  id: 2174003,
+  name: 'Brisbane',
+  cod: 200
 }
 const renderWeatherInfo = (dailyWeather) => {}
