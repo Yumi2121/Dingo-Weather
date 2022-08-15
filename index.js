@@ -1,1 +1,5 @@
-console.log('test')
+const getGeolocation = (inputValue) => {}
+
+const getWeatherInfo = (geoLocation) => {}
+
+const renderWeatherInfo = (dailyWeather) => {}
