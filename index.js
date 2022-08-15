@@ -21,7 +21,7 @@ const searchButton = document.querySelector('#search-button')
 
 const handleClick = () => {
   try {
-    weatherInfo = getWeatherInfo(searchBar)
+    weatherInfo = getWeatherInfo(searchBar.value)
     renderWeatherInfo(weatherInfo)
   } catch (e) {
     console.error(e)
