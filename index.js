@@ -89,10 +89,10 @@ let sunsetTimeStamp = new Date(current.sys.sunset * 1000)
 let sunset = document.getElementById('sunset')
 sunset.textContent = `Sunset: ${sunsetTimeStamp.getHours()}:${sunsetTimeStamp.getMinutes()}`
 
-let rain = current.clouds.all
+let rain = current.main.humidity
 let rainPercent = document.getElementById('rain')
-rainPercent.textContent = `Chance of Rain: ${rain}%`
+rainPercent.textContent = `${rain}%`
 
 let wind = current.wind.speed
 let windDom = document.getElementById('wind')
-windDom.textContent = `Wind Speed: ${wind} m/s`
+windDom.textContent = `${wind} m/s`
