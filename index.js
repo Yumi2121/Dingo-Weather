@@ -1,22 +1,22 @@
-const getGeolocation = (inputValue) => {}
-
 const getWeatherInfo = async (geoLocation) => {
   const apiKey = '3fb3bd415089d39656842aea6abbf73f'
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${geoLocation.toLowerCase()}&appid=${apiKey}`
-
   try {
     const response = await fetch(url, {
       'Access-Control-Allow-Origin': 'https://api.openweathermap.org'
     })
     const text = await response.text()
-    console.log('this should be the response: ', text)
+    const data = JSON.parse(text)
+    console.log('this should be the response: ', data)
     return text
   } catch (e) {
     console.error(e)
   }
 }
 
-getWeatherInfo('Brisbane')
+const searchBar = document.querySelector('#search-bar')
+const searchButton = document.querySelector('#search-button')
+searchButton.addEventListener('click', () => getWeatherInfo(searchBar.value))
 
 const current = {
   coord: {
