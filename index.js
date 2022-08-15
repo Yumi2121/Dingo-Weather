@@ -10,7 +10,7 @@ const getWeatherInfo = async (geoLocation) => {
     const text = await response.text()
     const data = JSON.parse(text)
     console.log('this should be the response: ', data)
-    return text
+    return data
   } catch (e) {
     console.error(e)
   }
