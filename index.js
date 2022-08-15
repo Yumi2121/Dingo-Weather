@@ -14,10 +14,6 @@ const newAlert = (message) => {
   close.addEventListener('click', () => alert.remove())
 }
 
-const alertBar = document.querySelector('#alert-bar')
-const alertButton = document.querySelector('#alert-button')
-alertButton.addEventListener('click', () => newAlert(alertBar.value))
-
 const handleError = (error) => {
   newAlert(error.message)
   weatherInfo = {}
@@ -40,9 +36,34 @@ const stopSpinner = () => {
   splash.remove()
 }
 
-const getWeatherInfo = async (geoLocation) => {
+const handleClick = async (location) => {
+  runSpinner()
+  weatherInfo = await getWeatherInfo(location)
+  stopSpinner()
+  renderWeatherInfo(weatherInfo)
+}
+// AUTOCOMPLETE
+// let autocomplete
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+    document.querySelector('#search-bar'),
+    {
+      componentRestrictions: { country: ['AU'] },
+      fields: ['geometry'],
+      types: ['(cities)']
+    }
+  )
+
+  autocomplete.addListener('place_changed', () => {
+    const { lat, lng } = autocomplete.getPlace().geometry.location
+    console.log(lat(), lng())
+    handleClick({ lat: lat(), lng: lng() })
+  })
+}
+
+const getWeatherInfo = async ({ lat, lng }) => {
   const apiKey = '3fb3bd415089d39656842aea6abbf73f'
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${geoLocation.toLowerCase()}&appid=${apiKey}`
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`
   try {
     const response = await fetch(url, {
       'Access-Control-Allow-Origin': 'https://api.openweathermap.org'
@@ -60,17 +81,7 @@ const getWeatherInfo = async (geoLocation) => {
   }
 }
 
-const searchBar = document.querySelector('#search-bar')
-const searchButton = document.querySelector('#search-button')
-
-const handleClick = async () => {
-  runSpinner()
-  weatherInfo = await getWeatherInfo(searchBar.value)
-  stopSpinner()
-  renderWeatherInfo(weatherInfo)
-}
-
-searchButton.addEventListener('click', () => handleClick())
+// searchButton.addEventListener('click', () => handleClick())
 
 const current = {
   coord: {

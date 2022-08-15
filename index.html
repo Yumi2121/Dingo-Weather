@@ -19,19 +19,6 @@
         <button id="search-button">🔍</button>
       </div>
 
-      <br />
-
-      <!-- delete later, just for demo'ing alerts -->
-      <div id="alerts">
-        <input
-          type="text"
-          id="alert-bar"
-          placeholder="Enter an alert message"
-          value="Enter an alert message"
-        />
-        <button id="alert-button">generate an alert</button>
-      </div>
-
       <!-- show weather details  -->
       <p id="date">16/09/2022</p>
       <h3>The Weather in London is</h3>
@@ -51,5 +38,9 @@
     </footer>
 
     <script src="index.js"></script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMOyfrWhbFF-bmX9T6DZW6oAK8jfiFMIg&libraries=places&callback=initAutocomplete"
+    ></script>
   </body>
 </html>
