@@ -1,5 +1,3 @@
-let weatherInfo = {}
-
 const cancel = document.querySelector('#cancel-button')
 cancel.addEventListener('click', () => {
   const searchBar = document.querySelector('#search-bar')
@@ -44,7 +42,7 @@ const stopSpinner = () => {
 
 const handleClick = async (location) => {
   runSpinner()
-  weatherInfo = await getWeatherInfo(location)
+  const weatherInfo = await getWeatherInfo(location)
   stopSpinner()
   renderWeatherInfo(weatherInfo)
 }
@@ -67,9 +65,7 @@ function initAutocomplete() {
   })
 }
 
-const getWeatherInfo = async ({ lat, lng }) => {
-  const apiKey = '3fb3bd415089d39656842aea6abbf73f'
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`
+const apiFetch = async (url) => {
   try {
     const response = await fetch(url, {
       'Access-Control-Allow-Origin': 'https://api.openweathermap.org'
@@ -87,6 +83,15 @@ const getWeatherInfo = async ({ lat, lng }) => {
   }
 }
 
+const getWeatherInfo = async ({ lat, lng }) => {
+  const apiKey = '3fb3bd415089d39656842aea6abbf73f'
+  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`
+  const alertUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=current,hourly,daily,minutely&appid=${apiKey}`
+  const current = await apiFetch(currentUrl)
+  const alerts = await apiFetch(alertUrl)
+  return { current, alerts }
+}
+
 let months = [
   'Jan',
   'Feb',
@@ -101,7 +106,7 @@ let months = [
   'Nov',
   'Dec'
 ]
-const renderWeatherInfo = (current) => {
+const renderWeatherInfo = ({ current, alerts }) => {
   const mainDate = document.getElementById('main-date')
   const timeStamp = new Date(current.dt * 1000)
   // const dateStr = timeStamp.toLocaleDateString()
