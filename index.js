@@ -131,39 +131,38 @@ const renderWeatherInfo = (current) => {
     'weather-icon'
   ).src = `http://openweathermap.org/img/wn/${weatherIconID}@2x.png`
 
+  const weatherDescription = document.getElementById('weather-description')
+  const currDescription = current.weather[0].description
+  console.log(currDescription)
+  weatherDescription.textContent = `${currDescription}`
+
   const currTemp = Math.round(current.main.temp - 273)
   const currTempDom = document.getElementById('temp')
   currTempDom.innerHTML = `${currTemp} C`
-  document.getElementById('temp-img').src = "./resources/temp.png"
-  // const weatherBorder = document.getElementsByClassName("weather-buttons") 
+  document.getElementById('temp-img').src = './resources/temp.png'
+  // const weatherBorder = document.getElementsByClassName("weather-buttons")
   // weatherBorder.style.border = "thick solid black"
-  document.getElementById('wb1').style.border = "2px solid grey";
-  
-
+  document.getElementById('wb1').style.border = '2px solid grey'
 
   const sunriseTimeStamp = new Date(current.sys.sunrise * 1000)
   const sun = document.getElementById('sun')
   sun.textContent = `Sunrise: ${sunriseTimeStamp.getHours()}:${sunriseTimeStamp.getMinutes()}`
-  document.getElementById('sunset-img').src = "./resources/sunset.png"
-  document.getElementById('wb2').style.border = "2px solid grey";
+  document.getElementById('sunset-img').src = './resources/sunset.png'
+  document.getElementById('wb2').style.border = '2px solid grey'
 
   const sunsetTimeStamp = new Date(current.sys.sunset * 1000)
   const sunset = document.getElementById('sunset')
   sunset.textContent = `Sunset: ${sunsetTimeStamp.getHours()}:${sunsetTimeStamp.getMinutes()}`
- 
 
   const rain = current.main.humidity
   const rainPercent = document.getElementById('rain')
   rainPercent.textContent = `${rain}%`
-  document.getElementById('rain-img').src = "./resources/rain.png"
-  document.getElementById('wb3').style.border = "2px solid grey";
+  document.getElementById('rain-img').src = './resources/rain.png'
+  document.getElementById('wb3').style.border = '2px solid grey'
 
   const wind = current.wind.speed
   const windDom = document.getElementById('wind')
   windDom.textContent = `${wind} m/s`
-  document.getElementById('wind-img').src = "./resources/wind.png"
-  document.getElementById('wb4').style.border = "2px solid grey";
+  document.getElementById('wind-img').src = './resources/wind.png'
+  document.getElementById('wb4').style.border = '2px solid grey'
 }
-
-
-
