@@ -58,9 +58,9 @@ The **barking Dingo** logo and the expediant weather stats for Australian cities
 
 You can see additional works by the team by clicking on their names and viewing their personal Github repositories.
 
-- [Anthony Reynolds](https://github.com/anthonymarkreynolds)worked as a System Administrator prior to becoming a Software Engineer, which gave him a good understanding of Server-side management.
-- [Zumin Yu](https://github.com/Yumi2121) had a background in design prior to her Web Development career and this has helped her in creating excellent UI/UX.
-- [Anthony Chung](https://github.com/anthonybchung)is a highly Mechanical Engineer who takes to designing and building with natural talent
-- [Hardeep Singh](https://github.com/HardeepSinghAu)
+- [Anthony Reynolds](https://github.com/anthonymarkreynolds) worked as a System Administrator prior to becoming a Software Engineer, which gave him a good understanding of Server-side management.
+- [Zumin Yu](https://github.com/Yumi2121) has a degree in Fashion and design backed by strong experience in the fashion and design industry. As she launched her Web Development career, her expereinces have enabled her in creating excellent UI/UX.
+- [Anthony Chung](https://github.com/anthonybchung) is a highly  skilled Mechanical Engineer with a lifetime of experience within the fashion industry. He takes to designing and building with natural talent and original ideas.
+- [Hardeep Singh](https://github.com/HardeepSinghAu) is a sales professional with a background in Biomedical Scienes.
 
 ![logo](resources/1.png)
