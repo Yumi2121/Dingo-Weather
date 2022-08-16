@@ -1,26 +1,60 @@
 # Dingo Weather App
+
 ## Developers: Anthony Reynolds, Zumin Yu, Anthony Chung,  Hardeep Singh
 
-### Project Description
+### **Project Description**
 
-What was your motivation?
-Why did you build this project?
-What problem does it solve?
-What did you learn?
-What makes your project stand out?
+As part of the Coder Academy Hackathon, we decided to build a weather app. This was an idea that won against creating a pomodoro type app that allowed the user to assign timed tasks for the day and a website show-casing student coders.
+
+We felt a weather app would provide more of a learning curve and aswell as allow the consideration and  implementation of a greater number of features.
+### **What problem does it solve?**
+
+We wanted to create a local Australian app by Australian Developers hence the **Dingo**. The purpose of this project was to create an app that would present the local weather swiftly and accurately.
+
+### **Features**
+
+This app provides a hassle free, lean weather service with the main content the user wants to view easily. 
+
+### **What did we learn?**
+
+We chose to create a Weather App using an API so that we would have a steep learning curve and we sure did! From each other, we learnt about technologies such as imovie, pandoc, canvas, bootstrap and tailwind.
+
+From working on the project, team members learnt about:
+- Cross-origin policies
+- About APIs connected to and working with the app
+- Google places and the Google Map API
+- Managing API key credentials and restricting access to the key
 
 
-What your application does
-Why you used the technologies you used,
-Some of the challenges you faced and features you hope to implement in the future
+### **What makes your project stand out?**
+The **barking Dingo** logo and the expediant weather stats for Australian cities on the go!
 
-### Access
+### **Technologies we used**
+- HTML
+- CSS
+- JavaScript
+- [Github Pages](https://pages.github.com/)
+- Github for version control
+- [Open Weather API](https://openweathermap.org/api) 
+- [Google Maps API](https://developers.google.com/maps/documentation/places/web-service/overview)
+
+### **Some of the challenges you faced**
+- Cross-origin policies
+- Managing API key credentials and restricting access to the key
+- Getting bootstrap working
+- Sourcing quality weather icons
+
+### **Features you hope to implement in the future**
+- Alerts
+- Comparisons between multiple locations
+- Weekly forecast
+- A graph of temperature for the day
+- Historical weather look up
+
+### **Access**
 [Dingo Weather App](https://anthonymarkreynolds.github.io/Dingo-Weather/)
 
-### Features
-
-
-### The Team
+### **The Team**
 
 You can see additional works by the team by clicking on their names and viewing their personal Github repositories.
 
@@ -28,3 +62,5 @@ You can see additional works by the team by clicking on their names and viewing 
 - [Zumin Yu](https://github.com/Yumi2121) had a background in design prior to her Web Development career and this has helped her in creating excellent UI/UX.
 - [Anthony Chung](https://github.com/anthonybchung)is a highly Mechanical Engineer who takes to designing and building with natural talent
 - [Hardeep Singh](https://github.com/HardeepSinghAu)
+
+![logo](resources/1.png)
