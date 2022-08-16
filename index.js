@@ -139,3 +139,6 @@ const renderWeatherInfo = (current) => {
   const windDom = document.getElementById('wind')
   windDom.textContent = `${wind} m/s`
 }
+
+
+
