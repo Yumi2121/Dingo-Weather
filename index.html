@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
 
-    <img src="resources/1.png" alt="" id="icon">
-    <h1>Dingo Weather</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>HTML 5 Boilerplate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <div id="main">
-      <!-- search location div  -->
-      <div id="search"> 
-          <input type="text" id="search-bar">
-          <button>🔍</button>
-      </div>
-<!-- show weather details  -->
-        <p id="main-date">16/09/2022</p>
-        <h3>The Weather in London is</h3>
-        <img id="weather-icon" src="" alt="🌪" >
+<body>
+  <div id="alert-area"></div>
+  <img src="resources/1.png" alt="" id="icon" />
+  <h1>Dingo Weather</h1>
 
-<!-- div holding four icons horizontally -->
-      <div id="weather">
-        <div class="weather-buttons", id="temp"> temp</div>
-        <div class="weather-buttons", id="sun"> sunrise and sunset</div>
-        <div class="weather-buttons", id="rain"> chance of rain</div>
-        <div class="weather-buttons", id="wind">wind</div>
-      </div>
-
+  <div id="main">
+    <!-- search location div  -->
+    <div id="search">
+      <button id="search-button"><i class="fas fa-search"></i></button>
+      <input type="search" id="search-bar" placeholder="Type the City" />
+      <button id="cancel-button"><i class="fa-solid fa-x"></i></button>
     </div>
 
+    <!-- show weather details  -->
+    <p id="main-date"></p>
+    <h3 id="main-location">Enter a place for weather report</h3>
+    <img id="weather-icon" />
 
+    <!-- div holding four icons horizontally -->
+    <div id="weather">
+      <div class="weather-buttons">
+        <img src="" />
+        <div id="temp"></div>
+      </div>
+      <div class="weather-buttons">
+        <img src="" />
+        <div id="sun"></div>
+        <div id="sunset"></div>
+      </div>
 
-    <footer>
-      <p> &copy 2021 Dingo.Inc. All rights Reserved.</p>
+      <div class="weather-buttons">
+        <img src="" />
+        <div id="rain"></div>
+      </div>
+      <div class="weather-buttons">
+        <img src="" />
+        <div id="wind"></div>
+      </div>
+    </div>
+  </div>
 
-    </footer>
+  <footer>
+    <p>&copy 2021 Dingo.Inc. All rights Reserved.</p>
+  </footer>
 
+  <script src="index.js"></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMOyfrWhbFF-bmX9T6DZW6oAK8jfiFMIg&libraries=places&callback=initAutocomplete"></script>
+</body>
 
-
-    <script src="index.js"></script>
-  </body>
 </html>
