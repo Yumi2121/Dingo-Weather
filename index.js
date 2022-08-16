@@ -20,7 +20,6 @@ const newAlert = (message) => {
 
 const handleError = (error) => {
   newAlert(error.message)
-  weatherInfo = {}
   console.error(error)
 }
 
@@ -40,7 +39,7 @@ const stopSpinner = () => {
   splash.remove()
 }
 
-const handleClick = async (location) => {
+const handleSubmit = async (location) => {
   runSpinner()
   const weatherInfo = await getWeatherInfo(location)
   stopSpinner()
@@ -61,7 +60,7 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', () => {
     const { lat, lng } = autocomplete.getPlace().geometry.location
     console.log(lat(), lng())
-    handleClick({ lat: lat(), lng: lng() })
+    handleSubmit({ lat: lat(), lng: lng() })
   })
 }
 
@@ -86,10 +85,8 @@ const apiFetch = async (url) => {
 const getWeatherInfo = async ({ lat, lng }) => {
   const apiKey = '3fb3bd415089d39656842aea6abbf73f'
   const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`
-  const alertUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude=current,hourly,daily,minutely&appid=${apiKey}`
   const current = await apiFetch(currentUrl)
-  const alerts = await apiFetch(alertUrl)
-  return { current, alerts }
+  return current
 }
 
 let months = [
@@ -106,7 +103,7 @@ let months = [
   'Nov',
   'Dec'
 ]
-const renderWeatherInfo = ({ current, alerts }) => {
+const renderWeatherInfo = (current) => {
   const mainDate = document.getElementById('main-date')
   const timeStamp = new Date(current.dt * 1000)
   // const dateStr = timeStamp.toLocaleDateString()
