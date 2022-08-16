@@ -87,10 +87,27 @@ const getWeatherInfo = async ({ lat, lng }) => {
   }
 }
 
+let months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+]
 const renderWeatherInfo = (current) => {
   const mainDate = document.getElementById('main-date')
   const timeStamp = new Date(current.dt * 1000)
-  const dateStr = timeStamp.toLocaleDateString()
+  // const dateStr = timeStamp.toLocaleDateString()
+  const dateStr = `${timeStamp.getDay()} ${
+    months[timeStamp.getMonth()]
+  } ${timeStamp.getFullYear()}`
   mainDate.innerHTML = dateStr
 
   const mainLocation = document.getElementById('main-location')
