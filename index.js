@@ -1,5 +1,4 @@
-let weatherInfo = {}
-
+// Clears search bar
 const cancel = document.querySelector('#cancel-button')
 cancel.addEventListener('click', () => {
   const searchBar = document.querySelector('#search-bar')
@@ -20,12 +19,13 @@ const newAlert = (message) => {
   close.addEventListener('click', () => alert.remove())
 }
 
+// generates  alert with an error message
 const handleError = (error) => {
   newAlert(error.message)
-  weatherInfo = {}
   console.error(error)
 }
 
+// displays a fullscreen  loader
 const runSpinner = () => {
   const splash = document.createElement('div')
   const loader = document.createElement('h1')
@@ -37,20 +37,23 @@ const runSpinner = () => {
   splash.appendChild(loader)
 }
 
+// removes fullscreen loader
 const stopSpinner = () => {
   const splash = document.querySelector('.splash')
   splash.remove()
 }
 
-const handleClick = async (location) => {
+// handles form sumbit
+const handleSubmit = async (location) => {
   runSpinner()
-  weatherInfo = await getWeatherInfo(location)
+  const weatherInfo = await getWeatherInfo(location)
   stopSpinner()
   renderWeatherInfo(weatherInfo)
 }
+
 // AUTOCOMPLETE
-// let autocomplete
 function initAutocomplete() {
+  // init autocomplete for search bar
   autocomplete = new google.maps.places.Autocomplete(
     document.querySelector('#search-bar'),
     {
@@ -60,16 +63,16 @@ function initAutocomplete() {
     }
   )
 
+  // run handleSubmit when a location is selected
   autocomplete.addListener('place_changed', () => {
     const { lat, lng } = autocomplete.getPlace().geometry.location
     console.log(lat(), lng())
-    handleClick({ lat: lat(), lng: lng() })
+    handleSubmit({ lat: lat(), lng: lng() })
   })
 }
 
-const getWeatherInfo = async ({ lat, lng }) => {
-  const apiKey = '3fb3bd415089d39656842aea6abbf73f'
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`
+// function for making request to apis
+const apiFetch = async (url) => {
   try {
     const response = await fetch(url, {
       'Access-Control-Allow-Origin': 'https://api.openweathermap.org'
@@ -87,21 +90,30 @@ const getWeatherInfo = async ({ lat, lng }) => {
   }
 }
 
-let months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-]
+// receives geolocation and builds a url for api request and sends it.
+const getWeatherInfo = async ({ lat, lng }) => {
+  const apiKey = '3fb3bd415089d39656842aea6abbf73f'
+  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`
+  const current = await apiFetch(currentUrl)
+  return current
+}
+
+// rendersWeatherInfo
 const renderWeatherInfo = (current) => {
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ]
   const mainDate = document.getElementById('main-date')
   const timeStamp = new Date(current.dt * 1000)
   // const dateStr = timeStamp.toLocaleDateString()
