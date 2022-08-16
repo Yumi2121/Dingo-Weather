@@ -45,36 +45,48 @@
       <button id="cancel-button"><i class="fa-solid fa-x"></i></button>
     </div>
 
-    <!-- show weather details  -->
-    <p id="main-date"></p>
-    <h3 id="main-location"></h3>
-    <div class="bold-weather-image">
-      <img id="weather-icon" />
-    </div>
-    <div id="weather-decription"></div>
 
-    <!-- div holding four icons horizontally -->
-    <div id="weather">
-      <div class="weather-buttons">
-        <img src="" />
-        <div id="temp"></div>
-      </div>
-      <div class="weather-buttons">
-        <img src="" />
-        <div id="sun"></div>
-        <div id="sunset"></div>
-      </div>
+    <section class="colored-section" id="history">
+      <div id="weather-carousel" class="carousel slide" data-ride="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active container-fluid">
+            <!-- show weather details  -->
+            <p id="main-date"></p>
+            <h3 id="main-location"></h3>
+            <div class="bold-weather-image">
+              <img id="weather-icon" />
+            </div>
+            <div id="weather-decription"></div>
 
-      <div class="weather-buttons">
-        <img src="" />
-        <div id="rain"></div>
-      </div>
-      <div class="weather-buttons">
-        <img src="" />
-        <div id="wind"></div>
-      </div>
-    </div>
+            <!-- div holding four icons horizontally -->
+            <div id="weather">
+              <div class="weather-buttons" id="wb1">
+                <img id="temp-img" />
+                <div id="temp"></div>
+              </div>
+              <div class="weather-buttons" id="wb2" >
+                <img id="sunset-img" src="" />
+                <div id="sun"></div>
+                <div id="sunset"></div>
+              </div>
+
+              <div class="weather-buttons" id="wb3">
+                <img id="rain-img" src="" />
+                <div id="rain"></div>
+              </div>
+              <div class="weather-buttons" id="wb4">
+                <img id="wind-img" src="" />
+                <div id="wind"></div>
+              </div>
+            </div>
+          </div>
+
   </div>
+</div>
+</div>
+
+</section>
+
 
   <footer id="footer">
     <div class="container-fluid">
