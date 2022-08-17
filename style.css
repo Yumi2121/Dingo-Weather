@@ -24,6 +24,10 @@ body {
   background-color: var(--color-white);
 }
 
+body.container {
+  max-width: 400px !important;
+}
+
 #alert-area {
   position: absolute;
   width: 100%;
